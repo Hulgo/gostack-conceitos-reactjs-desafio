@@ -31,10 +31,7 @@ function App() {
   async function handleRemoveRepository(id) {
     await api.delete(`/repositories/${id}`);
 
-    api.get('/repositories').then((response) => {
-      setRepositories(response.data);
-    });
-
+    setRepositories(repositories.filter(repository => repository.id !== id));
   }
 
   async function handleAddLike(id) {
